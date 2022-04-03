@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { QuestionService } from '../service/question.service';
+import { Observable } from 'rxjs';
+import 'rxjs/add/operator/map';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-question',
@@ -7,9 +12,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class QuestionComponent implements OnInit {
 
-  constructor() { }
+  public name:string="";
+  constructor(private questionService : QuestionService) { }
 
   ngOnInit(): void {
+    this.name=localStorage.getItem("name")!;
+    // this.getAllQuestions();
+
   }
+
+  // getAllQuestions(){
+  //   this.questionService.getQuestionJson()
+  //   .subscribe((res: any)=>{
+  //     console.log(res.questions);
+  //   })
+  // }
 
 }
