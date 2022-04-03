@@ -3,6 +3,7 @@ import { QuestionService } from '../service/question.service';
 import { Observable } from 'rxjs';
 import 'rxjs/add/operator/map';
 import { HttpClient } from '@angular/common/http';
+import 'rxjs/add/observable/throw';
 
 
 @Component({
@@ -17,15 +18,15 @@ export class QuestionComponent implements OnInit {
 
   ngOnInit(): void {
     this.name=localStorage.getItem("name")!;
-    // this.getAllQuestions();
+     this.getAllQuestions();
 
   }
 
-  // getAllQuestions(){
-  //   this.questionService.getQuestionJson()
-  //   .subscribe((res: any)=>{
-  //     console.log(res.questions);
-  //   })
-  // }
+  getAllQuestions(){
+    this.questionService.getQuestionJson()
+    .subscribe((res: any)=>{
+      console.log(res.questions);
+    })
+  }
 
 }
